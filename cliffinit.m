@@ -6,7 +6,7 @@ for i = 2:11
     maze(4,i) = -100;
 end
 
-maze(4,12) = 10;
+maze(4,12) = 1000;
 
 % init start and goal
 start = 4;       

@@ -3,13 +3,13 @@
 clear;clc;
 
 % learning rate (between 0 and 1)
-alpha_p = 0.4;
+alpha_p = 0.1;
 
 % discount factor (between 0 and 1)
-gamma_p = 0.5;
+gamma_p = 0.8; % or greater
 
 % percentage chance for random during policy evaluation
-epsilon_p = 0.3;
+epsilon_p = 0.1;
 
 % max iteration
 max_itr = 200;

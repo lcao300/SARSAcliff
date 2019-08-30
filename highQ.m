@@ -14,7 +14,7 @@ function [action] = highQ(state,Q)
         action = act_Q;
     % find max
     else
-        max = 0;
+        max = -1000000;
         index = 0;
         for m=1:4
             if ( Q_arr(:,m)>max && actions_Q(:,m) ~= 0)

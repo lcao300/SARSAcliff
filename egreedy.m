@@ -7,7 +7,7 @@ load('parameters.mat', 'epsilon_p');
 random_num = rand;
 
 % if epsilon choose randomly
-if ( random_num == epsilon_p )
+if ( random_num <= epsilon_p )
     action = random(action_arr);
 
 % if not epsilon choose move with best Q
