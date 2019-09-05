@@ -6,9 +6,6 @@ load('parameters.mat')
 % init Q matrix
 Q = zeros(goal, 4);
 
-% init total iterations per episode matrix
-total_itr = [];
-
 % count for task
 count = 1;
 
@@ -17,7 +14,8 @@ reward_arr = [];
 
 % run through task max_itr number of times
 for i=1:max_itr
-    % init total reward for task
+    
+    % init totalreward
     totalreward = 0;
     
     % init current state at start
@@ -41,7 +39,8 @@ for i=1:max_itr
         
         % if next state is on the cliff
         if ( mod(next_state,4) == 0 && next_state ~= 4 && next_state ~= 48)
-            next_state = start;
+            totalreward = totalreward + reward;
+            break;
         end
         
         % find next possible actions from next state
@@ -64,14 +63,8 @@ for i=1:max_itr
             break;
         end
     % end of episode
-    % totalreward = totalreward + reward;
+    totalreward = totalreward + reward;
     end
-    
-    % run through cliff exploiting highest Q
-    [~,totalreward] = cliffrun(Q);
-   
-    % update total iteration array
-    %%% total_itr = [total_itr itr];
 
     fprintf('count:');
     disp(count);
@@ -81,10 +74,9 @@ for i=1:max_itr
 % end of task
 end
 
-
 % final run through of cliff using greedy
 % init final path array
-[final_path, ~] = cliffrun(Q);
+[final_path,~]=cliffrun(Q);
 
 % display final path
 disp(final_path);
@@ -95,6 +87,6 @@ figure;
 plot(x,reward_arr);
 title(['SARSA algorithm; \alpha = ' num2str(alpha_p) ' \gamma = ' num2str(gamma_p) ' \epsilon = ' num2str(epsilon_p)])
 xlim([0 max_itr]);
-ylim([-10000 0]);
+ylim([-150 10]);
 xlabel('Episodes');
 ylabel('Reward');
