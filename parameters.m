@@ -6,10 +6,10 @@ clear;clc;
 alpha_p = 0.1;
 
 % discount factor (between 0 and 1)
-gamma_p = 0.5; % or greater
+gamma_p = 0.9; % or greater
 
 % percentage chance for random during policy evaluation
-epsilon_p = 0.9; % or greater
+epsilon_p = 0.15; 
 
 % max iteration
 max_itr = 5000;

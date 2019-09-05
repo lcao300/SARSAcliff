@@ -87,6 +87,6 @@ figure;
 plot(x,reward_arr);
 title(['SARSA algorithm; \alpha = ' num2str(alpha_p) ' \gamma = ' num2str(gamma_p) ' \epsilon = ' num2str(epsilon_p)])
 xlim([0 max_itr]);
-ylim([-150 10]);
+ylim([-125 150]);
 xlabel('Episodes');
 ylabel('Reward');
