@@ -12,7 +12,7 @@ gamma_p = 0.9; % or greater
 epsilon_p = 0.15; 
 
 % max iteration
-max_itr = 5000;
+max_itr = 1000;
 
 % max interation within an episode
 max_ep_itr = 1000;

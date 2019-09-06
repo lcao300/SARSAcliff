@@ -65,12 +65,15 @@ for i=1:max_itr
     % end of episode
     totalreward = totalreward + reward;
     end
-
+    
+    Qimagesave(count,Q);
+    
     fprintf('count:');
     disp(count);
     count = count + 1;
     
     reward_arr = [reward_arr totalreward];
+
 % end of task
 end
 
