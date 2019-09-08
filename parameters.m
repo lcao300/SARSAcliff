@@ -3,7 +3,7 @@
 clear;clc;
 
 % learning rate (between 0 and 1)
-alpha_p = 0.01;
+alpha_p = 0.1;
 
 % discount factor (between 0 and 1)
 gamma_p = 0.99; % or greater
