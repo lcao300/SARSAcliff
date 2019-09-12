@@ -4,6 +4,8 @@
 % 
 %% function/file descriptions
 % 
+% agentmovessave: input count, count_ep, and curr_state; plot where agent 
+%                 is and save as image
 % calculate_r: input state and output reward at that state
 % cliffinit: create cliff and init start/goal
 % cliffrun: input Q and output path and total reward; runs through maze

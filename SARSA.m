@@ -40,6 +40,7 @@ for i=1:max_itr
         % if next state is on the cliff
         if ( mod(next_state,4) == 0 && next_state ~= 4 && next_state ~= 48)
             totalreward = totalreward + reward;
+            agentmovessave(count,count_ep,next_state);
             break;
         end
         
@@ -51,6 +52,8 @@ for i=1:max_itr
         
         % SARSA equation update
         Q(curr_state,action) = Q(curr_state,action) + alpha_p*[reward + gamma_p*Q(next_state,next_action) - Q(curr_state,action)];
+        
+        agentmovessave(count,count_ep,curr_state);
         
         % update state and action
         curr_state = next_state;
@@ -66,10 +69,12 @@ for i=1:max_itr
     totalreward = totalreward + reward;
     end
     
-    %Qimagefunc(count,Q);
+    Qimagefunc(count,Q);
     
-    fprintf('count:');
-    disp(count);
+    if ( mod(count,10) == 0 )
+        fprintf('count:');
+        disp(count);
+    end
     count = count + 1;
     
     reward_arr = [reward_arr totalreward];
