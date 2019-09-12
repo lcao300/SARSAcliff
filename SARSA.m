@@ -66,7 +66,7 @@ for i=1:max_itr
     totalreward = totalreward + reward;
     end
     
-    Qimagesave(count,Q);
+    %Qimagefunc(count,Q);
     
     fprintf('count:');
     disp(count);
@@ -82,7 +82,7 @@ end
 [final_path,~]=cliffrun(Q);
 
 % display final path
-disp(final_path);
+plotfinalpath(final_path);
 
 % make learning curve
 x = 1:max_itr;
