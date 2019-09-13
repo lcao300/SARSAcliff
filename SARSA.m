@@ -40,7 +40,11 @@ for i=1:max_itr
         % if next state is on the cliff
         if ( mod(next_state,4) == 0 && next_state ~= 4 && next_state ~= 48)
             totalreward = totalreward + reward;
-            agentmovessave(count,count_ep,next_state);
+            
+            if ( mod(count,20) == 0 )
+                agentmovessave(count,count_ep,next_state);
+            end
+            
             break;
         end
         
@@ -53,8 +57,12 @@ for i=1:max_itr
         % SARSA equation update
         Q(curr_state,action) = Q(curr_state,action) + alpha_p*[reward + gamma_p*Q(next_state,next_action) - Q(curr_state,action)];
         
-        agentmovessave(count,count_ep,curr_state);
+        % update agent images for every 10th completion of maze
+        if ( mod(count,20) == 0)
+            agentmovessave(count,count_ep,curr_state);
+        end
         
+ 
         % update state and action
         curr_state = next_state;
         action_arr = next_action_arr;
@@ -69,6 +77,7 @@ for i=1:max_itr
     totalreward = totalreward + reward;
     end
     
+    % save Q as image every time task is finished
     Qimagefunc(count,Q);
     
     if ( mod(count,10) == 0 )
