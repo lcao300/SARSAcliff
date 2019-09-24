@@ -1,4 +1,4 @@
-% SARSA implementation
+% Q implementation
 
 load('cliffinit.mat')
 load('parameters.mat')
@@ -21,19 +21,19 @@ for i=1:max_itr
     % init current state at start
     curr_state = start;
     
-    % find possible actions from currrent state
-    action_arr = find_action(curr_state);
-    
-    % find action based on egreedy
-    action = egreedy(curr_state,action_arr,Q);
-    
-    % find action based on softmax
-    % action = softmax(curr_state,action_arr,Q);
-    
-    % count for episode
-    count_ep = 1;
-    
     while ( curr_state ~= goal )
+        % find possible actions from currrent state
+        action_arr = find_action(curr_state);
+
+        % find action based on egreedy
+        action = egreedy(curr_state,action_arr,Q);
+
+        % find action based on softmax
+        % action = softmax(curr_state,action_arr,Q);
+
+        % count for episode
+        count_ep = 1;
+        
         % find next state based on action chosen
         next_state = action_arr(:,action);
 
@@ -55,7 +55,7 @@ for i=1:max_itr
         next_action_arr = find_action(next_state);
         
         % find next action based on egreedy
-        next_action = egreedy(next_state,next_action_arr,Q);
+        next_action = highQ(next_state,Q);
         
         % find next action based on softmax
         % next_action = softmax(next_state,next_action_arr,Q);
@@ -71,8 +71,6 @@ for i=1:max_itr
  
         % update state and action
         curr_state = next_state;
-        action_arr = next_action_arr;
-        action = next_action;
         
         % make sure while loop ~= infinite loop
         count_ep = count_ep + 1;
@@ -105,14 +103,14 @@ end
 plotfinalpath(final_path);
 
 % disp avg. reward
-disp('SARSA average reward');
+disp('Q-Learning average reward');
 disp(mean(reward_arr));
 
 % make learning curve
 x = 1:max_itr;
 figure;
 plot(x,reward_arr);
-title(['SARSA algorithm; \alpha = ' num2str(alpha_p) ' \gamma = ' num2str(gamma_p) ' \epsilon = ' num2str(epsilon_p)])
+title(['Q-Learning algorithm; \alpha = ' num2str(alpha_p) ' \gamma = ' num2str(gamma_p) ' \epsilon = ' num2str(epsilon_p)])
 xlim([0 max_itr]);
 ylim([-125 150]);
 xlabel('Episodes');
