@@ -3,10 +3,10 @@
 clear;clc;
 
 % learning rate (between 0 and 1)
-alpha_p = 0.01;
+alpha_p = 0.02;
 
 % inverse temperature
-% beta_p = 0.00001;
+beta_p = 0.00001;
 
 % discount factor (between 0 and 1)
 gamma_p = 0.99; % or greater
@@ -15,7 +15,7 @@ gamma_p = 0.99; % or greater
 epsilon_p = 0.01; 
 
 % max iteration
-max_itr = 1000;
+max_itr = 15000;
 
 % max interation within an episode
 max_ep_itr = 100;
@@ -23,5 +23,5 @@ max_ep_itr = 100;
 save('parameters.mat')
 
 cliffinit
-SARSA
+% SARSA
 QLearning

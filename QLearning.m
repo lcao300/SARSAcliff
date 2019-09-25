@@ -26,10 +26,10 @@ for i=1:max_itr
         action_arr = find_action(curr_state);
 
         % find action based on egreedy
-        action = egreedy(curr_state,action_arr,Q);
+        %action = egreedy(curr_state,action_arr,Q);
 
         % find action based on softmax
-        % action = softmax(curr_state,action_arr,Q);
+        action = softmax(curr_state,action_arr,Q);
 
         % count for episode
         count_ep = 1;
@@ -56,9 +56,6 @@ for i=1:max_itr
         
         % find next action based on egreedy
         next_action = highQ(next_state,Q);
-        
-        % find next action based on softmax
-        % next_action = softmax(next_state,next_action_arr,Q);
         
         % SARSA equation update
         Q(curr_state,action) = Q(curr_state,action) + alpha_p*[reward + gamma_p*Q(next_state,next_action) - Q(curr_state,action)];
