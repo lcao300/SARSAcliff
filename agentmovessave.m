@@ -1,11 +1,11 @@
-function agentmovessave(count,count_ep,curr_state)
+function agentmovessave(count, count_ep, curr_state)
 
 % make gif of agent over time
 
 countstr = num2str(count);
 underscorestr = '_';
 countepstr = num2str(count_ep);
-totalstr = strcat(countstr,underscorestr,countepstr);
+totalstr = strcat(countstr, underscorestr, countepstr);
 filename = totalstr;
 
 clifftask = zeros(1,48);
@@ -25,19 +25,18 @@ else
     clifftask(curr_state) = 1;
 end
 
-clifftask = reshape(clifftask,4,12);
+clifftask = reshape(clifftask, 4, 12);
 
-f = figure('visible','off');
+f = figure('visible', 'off');
 axis tight manual
 title('Agent');
 
-image(clifftask,'CDataMapping','scaled');
+image(clifftask, 'CDataMapping', 'scaled');
 colorbar;
 
 fpath = [pwd '/Agentimages'];
 
-saveas(f,fullfile(fpath,filename),'png');
-
+saveas(f,fullfile(fpath,filename), 'png');
 
 end
 

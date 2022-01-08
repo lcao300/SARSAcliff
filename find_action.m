@@ -10,7 +10,7 @@ action_arr = [];
 
 % up (1)
 % if state is at upper border of maze
-if ( mod(curr_state,4) == 1 )
+if ( mod(curr_state, 4) == 1 )
     action_arr(:,1) = 0;
 % if next state is valid
 else
@@ -19,7 +19,7 @@ end
 
 % down (2)
 % if state is at lower border of maze
-if ( mod(curr_state,4) == 0 )
+if ( mod(curr_state, 4) == 0 )
     action_arr(:,2) = 0;
 % if next state is valid
 else

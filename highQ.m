@@ -1,4 +1,4 @@
-function [action] = highQ(state,Q)
+function [action] = highQ(state, Q)
  
 % find action based on Q matrix
     
@@ -17,9 +17,8 @@ function [action] = highQ(state,Q)
         max = -1000000;
         index = 0;
         for m=1:4
-            if ( Q_arr(:,m)>max && Q_arr(:,m) ~= 0 && actions_Q(:,m) ~= 0)
+            if ( Q_arr(:,m) > max && Q_arr(:,m) ~= 0 && actions_Q(:,m) ~= 0)
                 max = Q_arr(:,m);
-                % disp(max);
                 index = m;
             end
         end
